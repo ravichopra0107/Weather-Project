@@ -1,3 +1,4 @@
+//importing packages
 const express = require("express");
 const app = express();
 const https = require("https");
@@ -5,10 +6,12 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//home route get request
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
+//post route
 app.post("/", function (req, res) {
   const query = req.body.cityName;
   const apiKey = "83e71a175384e68d1b8b6954b1af9477";
@@ -41,7 +44,7 @@ app.post("/", function (req, res) {
     });
   });
 });
-
+//setting up port
 app.listen(3000, function () {
   console.log("Server is connected on port 3000");
 });
